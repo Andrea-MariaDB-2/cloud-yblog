@@ -1,6 +1,6 @@
 package com.boot.service.impl;
 
-import com.boot.pojo.visitor;
+import com.boot.pojo.Visitor;
 import com.boot.service.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ public class VisitorServiceImpl implements VisitorService {
     private com.boot.dao.VisitorMapper visitorMapper;
 
     @Override
-    public void insertVisitor(visitor visitor) {
+    public void insertVisitor(Visitor visitor) {
         visitorMapper.insertVisitor(visitor);
     }
 
     @Override
-    public List<visitor> selectVisitor() {
+    public List<Visitor> selectVisitor() {
         return visitorMapper.selectVisitor();
     }
 

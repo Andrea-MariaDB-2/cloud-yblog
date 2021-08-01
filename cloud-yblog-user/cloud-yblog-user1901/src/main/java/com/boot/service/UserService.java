@@ -1,20 +1,20 @@
 package com.boot.service;
 
-import com.boot.pojo.user;
-import com.boot.pojo.user_authority;
+import com.boot.pojo.User;
+import com.boot.pojo.UserAuthority;
 
 import java.util.List;
 
 public interface UserService {
 
 
-    void addUser(user user);
+    void addUser(User user);
 
-    void addUserAuthority(user_authority user_authority);
+    void addUserAuthority(UserAuthority UserAuthority);
 
     void updateEmail(String email, String username);
 
-    user selectUserInfoByuserName(String username);
+    User selectUserInfoByuserName(String username);
 
 
 
@@ -22,7 +22,7 @@ public interface UserService {
 
     void updatePassword(String username, String password);
 
-    List<user> selectAllUser();
+    List<User> selectAllUser();
 
     //失效==valid变成0
     void updateValidTo_0(String username);
@@ -38,7 +38,7 @@ public interface UserService {
     int userCount();
 
     //根据用户名和email去查询用户
-    List<user> selectUserByUsernameAndEmail(String username, String email);
+    List<User> selectUserByUsernameAndEmail(String username, String email);
 
     //根据用户名和email去查询用户数量
     int selectUserCountByUsernameAndEmail(String username, String email);

@@ -5,11 +5,11 @@
 
 <mapper namespace="com.boot.dao.UserDetailMapper">
 
-    <select id="selectUserDetailByUserName" resultType="com.boot.pojo.userDetail">
+    <select id="selectUserDetailByUserName" resultType="com.boot.pojo.UserDetail">
         select * from t_user_detail where name =#{name}
     </select>
 
-    <update id="updateUserDetail" parameterType="com.boot.pojo.userDetail">
+    <update id="updateUserDetail" parameterType="com.boot.pojo.UserDetail">
         update t_user_detail
         <set>
             <if test="blogName != null and blogName != ''">
@@ -35,7 +35,7 @@
     </update>
 
 
-    <insert id="addUserDetail" parameterType="com.boot.pojo.userDetail">
+    <insert id="addUserDetail" parameterType="com.boot.pojo.UserDetail">
         INSERT INTO t_user_detail (`name`, blogName, job, detail, github, weibo, icon )
         VALUES
 	    (

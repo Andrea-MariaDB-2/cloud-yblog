@@ -2,7 +2,7 @@ package com.boot.service.impl;
 
 import com.boot.dao.ArchiveMapper;
 import com.boot.pojo.Article;
-import com.boot.pojo.archive;
+import com.boot.pojo.Archive;
 import com.boot.service.ArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class ArchiveServiceImpl implements ArchiveService {
 
 
     @Override
-    public List<archive> selectAllArchiveGroup() {
+    public List<Archive> selectAllArchiveGroup() {
         return archiveMapper.selectAllArchiveGroup();
     }
 

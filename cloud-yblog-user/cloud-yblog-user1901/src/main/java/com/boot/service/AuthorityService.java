@@ -1,13 +1,13 @@
 package com.boot.service;
 
-import com.boot.pojo.authority;
+import com.boot.pojo.Authority;
 
 import java.util.List;
 
 public interface AuthorityService {
 
 
-    List<authority> selectUserAuthority();
+    List<Authority> selectUserAuthority();
 
     String selectAuthorityByid(int id);
 

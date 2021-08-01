@@ -13,7 +13,7 @@ import java.util.List;
 /** @author 游政杰  */
 @Controller
 @Api("客户端分类")
-@RequestMapping(path = "/category")
+@RequestMapping(path = "/feign/category")
 public class CategoryController {
 
   @Autowired private ArticleService articleService;

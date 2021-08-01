@@ -1,6 +1,6 @@
 package com.boot.dao;
 
-import com.boot.pojo.authority;
+import com.boot.pojo.Authority;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -12,7 +12,7 @@ import java.util.List;
 public interface AuthorityMapper {
 
 
-    List<authority> selectUserAuthority();
+    List<Authority> selectUserAuthority();
 
     String selectAuthorityByid(@Param("id") int id);
 

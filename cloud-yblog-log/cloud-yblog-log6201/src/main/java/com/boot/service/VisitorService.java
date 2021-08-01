@@ -1,14 +1,14 @@
 package com.boot.service;
 
-import com.boot.pojo.visitor;
+import com.boot.pojo.Visitor;
 
 import java.util.List;
 
 public interface VisitorService {
 
-    void insertVisitor(visitor visitor); //插入访问者
+    void insertVisitor(Visitor visitor); //插入访问者
 
-    List<visitor> selectVisitor(); //查询所有访问者
+    List<Visitor> selectVisitor(); //查询所有访问者
 
 
     //echarts，获取近7天日期

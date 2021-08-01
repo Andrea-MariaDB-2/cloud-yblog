@@ -1,6 +1,6 @@
 package com.boot.dao;
 
-import com.boot.pojo.category;
+import com.boot.pojo.Category;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -17,7 +17,7 @@ public interface CategoryMapper {
 
     public void updateCategoryCountDecr(@Param("categoryName") String categoryName);
 
-    public List<category> selectCategories();
+    public List<Category> selectCategories();
 
     public void updateCategory(@Param("oldName") String oldName, @Param("newName") String newName);
 
@@ -28,16 +28,16 @@ public interface CategoryMapper {
     public void updateCategoryCountByName(@Param("categoryName") String categoryName,
                                           @Param("count") int count);
 
-    public void addCategory(category category);
+    public void addCategory(Category category);
 
     //echarts
-    List<category> selectCategories_echarts();
+    List<Category> selectCategories_echarts();
 
 
     //查询分类数量
     int selectCategoryCount();
 
-    category selectCategoryByName(@Param("categoryName") String categoryName);
+    Category selectCategoryByName(@Param("categoryName") String categoryName);
 
 
     int selectCountByName(@Param("categoryName") String categoryName);

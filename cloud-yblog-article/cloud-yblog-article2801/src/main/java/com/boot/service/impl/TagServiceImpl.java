@@ -1,7 +1,7 @@
 package com.boot.service.impl;
 
 import com.boot.dao.TagMapper;
-import com.boot.pojo.tag;
+import com.boot.pojo.Tag;
 import com.boot.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class TagServiceImpl implements TagService {
     private TagMapper tagMapper;
 
     @Override
-    public void addTag(tag tag) {
+    public void addTag(Tag tag) {
         tagMapper.addTag(tag);
     }
 
@@ -30,7 +30,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<tag> selectAllTag() {
+    public List<Tag> selectAllTag() {
         return tagMapper.selectAllTag();
     }
 
@@ -40,12 +40,12 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<tag> selectTags_echarts() {
+    public List<Tag> selectTags_echarts() {
         return tagMapper.selectTags_echarts();
     }
 
     @Override
-    public List<tag> selectTags_limit8() {
+    public List<Tag> selectTags_limit8() {
         return tagMapper.selectTags_limit8();
     }
 

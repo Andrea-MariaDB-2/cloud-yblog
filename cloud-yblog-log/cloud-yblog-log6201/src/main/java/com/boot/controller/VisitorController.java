@@ -2,7 +2,7 @@ package com.boot.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.boot.data.ResponseData.layuiData;
-import com.boot.pojo.visitor;
+import com.boot.pojo.Visitor;
 import com.boot.service.VisitorService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,8 @@ import java.util.List;
  * @author 游政杰
  *
  */
-@Controller("pearVisitorController")
-@RequestMapping(path = "/pear")
+@Controller
+@RequestMapping(path = "/feign/pear")
 @CrossOrigin
 public class VisitorController {
 
@@ -33,16 +33,16 @@ public class VisitorController {
                               @RequestParam(value = "limit", defaultValue = "10") int limit){
 
 
-        layuiData<visitor> visitorlayuiData = new layuiData<>();
+        layuiData<Visitor> visitorlayuiData = new layuiData<>();
 
         PageHelper.startPage(page,limit);
-        List<visitor> visitors = visitorService.selectVisitor();
+        List<Visitor> Visitors = visitorService.selectVisitor();
 
         int count = visitorService.selectVistorCount();
         visitorlayuiData.setCode(0);
         visitorlayuiData.setCount(count);
         visitorlayuiData.setMsg("");
-        visitorlayuiData.setData(visitors);
+        visitorlayuiData.setData(Visitors);
 
         return JSON.toJSONString(visitorlayuiData);
     }

@@ -1,6 +1,6 @@
 package com.boot.dao;
 
-import com.boot.pojo.img;
+import com.boot.pojo.Img;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,9 +14,9 @@ public interface ImgMapper {
 
     void addImgPath(@Param("big") String big_img, @Param("small") String small_img);
 
-    List<img> selectAllImg();
+    List<Img> selectAllImg();
 
-    img selectImgByid(@Param("id") int id);
+    Img selectImgByid(@Param("id") int id);
 
     int selectImgCount();
 

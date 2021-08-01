@@ -1,6 +1,6 @@
 package com.boot.dao;
 
-import com.boot.pojo.tag;
+import com.boot.pojo.Tag;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -13,7 +13,7 @@ import java.util.List;
 public interface TagMapper {
 
 
-    public void addTag(tag tag);
+    public void addTag(Tag tag);
 
     //把指定标签的数量-1
     public void changeTagByTagNameDecr(@Param("tagName") String tagName);
@@ -23,14 +23,14 @@ public interface TagMapper {
 
     public void insertTag(@Param("tagName") String tagName);
 
-    public List<tag> selectAllTag();
+    public List<Tag> selectAllTag();
 
     //echarts
-    List<tag> selectTags_echarts();
+    List<Tag> selectTags_echarts();
 
     //首页标签
     @Select("select * from t_tag  order by tagCount desc limit 8")
-    List<tag> selectTags_limit8();
+    List<Tag> selectTags_limit8();
 
     @Select("select count(*) from t_tag")
     int selectTagCount();

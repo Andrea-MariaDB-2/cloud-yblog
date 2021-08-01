@@ -1,6 +1,6 @@
 package com.boot.service.impl;
 
-import com.boot.pojo.user_authority;
+import com.boot.pojo.UserAuthority;
 import com.boot.service.UserAuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,8 @@ public class UserAuthorityServiceImpl implements UserAuthorityService {
     private com.boot.dao.UserAuthorityMapper userAuthorityMapper;
 
     @Override
-    public void changeUserAuthority(user_authority user_authority) {
-        userAuthorityMapper.changeUserAuthority(user_authority);
+    public void changeUserAuthority(UserAuthority UserAuthority) {
+        userAuthorityMapper.changeUserAuthority(UserAuthority);
     }
 
     @Override

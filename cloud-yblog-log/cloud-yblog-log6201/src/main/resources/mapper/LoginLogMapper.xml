@@ -3,7 +3,7 @@
 
 <mapper namespace="com.boot.dao.LoginLogMapper">
 
-    <insert id="insertLoginLog" parameterType="com.boot.pojo.loginLog">
+    <insert id="insertLoginLog" parameterType="com.boot.pojo.LoginLog">
         insert into t_loginlog (lg_username,lg_ip,lg_address,lg_browser,lg_os,lg_time,lg_type)
         values (
         #{username},#{ip},
@@ -32,7 +32,7 @@
 
 <!--    如果实体类字段和数据库字段名不一致，要用resultMap，不然会查空-->
 
-    <resultMap id="lg1" type="com.boot.pojo.loginLog">
+    <resultMap id="lg1" type="com.boot.pojo.LoginLog">
         <result property="id" column="id"/>
         <result property="username" column="lg_username"/>
         <result property="ip" column="lg_ip"/>

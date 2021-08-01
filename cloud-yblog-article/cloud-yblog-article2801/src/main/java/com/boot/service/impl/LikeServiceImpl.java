@@ -1,7 +1,7 @@
 package com.boot.service.impl;
 
 import com.boot.dao.LikeMapper;
-import com.boot.pojo.like;
+import com.boot.pojo.Like;
 import com.boot.service.ArticleService;
 import com.boot.service.LikeService;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +28,7 @@ public class LikeServiceImpl implements LikeService {
      * @param like
      */
     @Override
-    public boolean likeArticle(like like) {
+    public boolean likeArticle(Like like) {
 
         String flag = likeMapper.selectLikeExsit(like);
         if(!StringUtils.isEmpty(flag)){
@@ -55,7 +55,7 @@ public class LikeServiceImpl implements LikeService {
 
     @Override
     public String selectLikeExsit(String username,int articleid) {
-        like like = new like();
+        Like like = new Like();
         like.setUsername(username);
         like.setArticle_id(articleid);
         return likeMapper.selectLikeExsit(like);

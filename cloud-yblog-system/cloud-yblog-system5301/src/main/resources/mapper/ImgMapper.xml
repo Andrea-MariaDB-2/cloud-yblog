@@ -9,11 +9,11 @@
         insert into t_img(big_img,small_img) values(#{big},#{small})
     </insert>
 
-    <select id="selectAllImg" resultType="com.boot.pojo.img">
+    <select id="selectAllImg" resultType="com.boot.pojo.Img">
         select * from t_img
     </select>
 
-    <select id="selectImgByid" resultType="com.boot.pojo.img">
+    <select id="selectImgByid" resultType="com.boot.pojo.Img">
         select * from t_img where id=#{id}
     </select>
 

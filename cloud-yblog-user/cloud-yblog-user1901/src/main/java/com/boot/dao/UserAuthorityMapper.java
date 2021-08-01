@@ -1,6 +1,6 @@
 package com.boot.dao;
 
-import com.boot.pojo.user_authority;
+import com.boot.pojo.UserAuthority;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserAuthorityMapper {
 
-    void changeUserAuthority(user_authority user_authority);
+    void changeUserAuthority(UserAuthority UserAuthority);
 
     int selectAuthorityID(@Param("userid") int userid);
 

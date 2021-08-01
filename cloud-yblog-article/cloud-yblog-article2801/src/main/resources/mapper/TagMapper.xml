@@ -5,7 +5,7 @@
 
 <mapper namespace="com.boot.dao.TagMapper">
 
-    <insert id="addTag" parameterType="com.boot.pojo.tag">
+    <insert id="addTag" parameterType="com.boot.pojo.Tag">
         insert into t_tag (tagName,tagCount) values (#{tagName},#{tagCount})
     </insert>
 
@@ -21,11 +21,11 @@
         insert into t_tag (tagName,tagCount) values (#{tagName},1)
     </insert>
 
-    <select id="selectAllTag" resultType="com.boot.pojo.tag">
+    <select id="selectAllTag" resultType="com.boot.pojo.Tag">
         select id,tagName,tagCount from t_tag order by tagCount desc
     </select>
 
-    <select id="selectTags_echarts" resultType="com.boot.pojo.tag">
+    <select id="selectTags_echarts" resultType="com.boot.pojo.Tag">
          select tagName,tagCount from t_tag order by tagCount desc limit 4
     </select>
 

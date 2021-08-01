@@ -188,7 +188,7 @@
                 <div class="right-card-main">
                     <div class="right-card-title">友情链接</div>
                     <ul class="label">
-                        <li th:each="link:${links}">
+                        <li th:each="link:${Links}">
                             <a th:href="${link.getLink()}" th:text="${link.getTitle()}"></a>
                         </li>
                     </ul>

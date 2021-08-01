@@ -1,7 +1,7 @@
 package com.boot.dao;
 
-import com.boot.pojo.user;
-import com.boot.pojo.user_authority;
+import com.boot.pojo.User;
+import com.boot.pojo.UserAuthority;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
@@ -14,20 +14,20 @@ import java.util.List;
 public interface UserMapper {
 
 
-    void addUser(user user);
+    void addUser(User user);
 
-    void addUserAuthority(user_authority user_authority);
+    void addUserAuthority(UserAuthority UserAuthority);
 
     @Update("update t_user set email = #{email} where username=#{username}")
     void updateEmail(@Param("email") String email, @Param("username") String username);
 
-    user selectUserInfoByuserName(@Param("username") String username);
+    User selectUserInfoByuserName(@Param("username") String username);
 
     String selectPasswordByuserName(@Param("username") String username);
 
     void updatePassword(@Param("username") String username, @Param("password") String password);
 
-    List<user> selectAllUser();
+    List<User> selectAllUser();
 
     //失效==valid变成0
     void updateValidTo_0(@Param("username") String username);
@@ -44,7 +44,7 @@ public interface UserMapper {
     int userCount();
 
     //根据用户名和email去查询用户
-    List<user> selectUserByUsernameAndEmail(@Param("username") String username, @Param("email") String email);
+    List<User> selectUserByUsernameAndEmail(@Param("username") String username, @Param("email") String email);
 
     //根据用户名和email去查询用户数量
     int selectUserCountByUsernameAndEmail(@Param("username") String username, @Param("email") String email);

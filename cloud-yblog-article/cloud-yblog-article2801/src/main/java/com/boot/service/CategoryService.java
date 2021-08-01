@@ -1,7 +1,7 @@
 package com.boot.service;
 
 
-import com.boot.pojo.category;
+import com.boot.pojo.Category;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public interface CategoryService {
 
     public void updateCategoryCount(String categoryName);
 
-    public List<category> selectCategories();
+    public List<Category> selectCategories();
 
     public void updateCategoryCountDecr(String categoryName);
 
@@ -22,7 +22,7 @@ public interface CategoryService {
     public void updateCategoryCountByName(String categoryName,
                                           int count);
 
-    public void addCategory(category category);
+    public void addCategory(Category category);
 
 
     //代码重构
@@ -32,12 +32,12 @@ public interface CategoryService {
     public void deleteCategory_service(String n, String DEFAULT_CATEGORY);
 
     //echarts
-    List<category> selectCategories_echarts();
+    List<Category> selectCategories_echarts();
 
     //查询分类数量
     int selectCategoryCount();
 
-    category selectCategoryByName(String categoryName);
+    Category selectCategoryByName(String categoryName);
 
     int selectCountByName(String categoryName);
 

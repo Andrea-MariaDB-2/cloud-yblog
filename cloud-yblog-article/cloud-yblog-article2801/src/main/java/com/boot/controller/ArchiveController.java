@@ -14,7 +14,7 @@ import java.util.List;
 /** @author 游政杰 */
 @Api(value = "文章归档控制器")
 @Controller
-@RequestMapping(path = "/archive")
+@RequestMapping(path = "/feign/archive")
 public class ArchiveController {
 
   @Autowired

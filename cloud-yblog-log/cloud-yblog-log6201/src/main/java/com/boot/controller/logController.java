@@ -2,8 +2,8 @@ package com.boot.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.boot.data.ResponseData.layuiData;
-import com.boot.pojo.loginLog;
-import com.boot.pojo.operationLog;
+import com.boot.pojo.LoginLog;
+import com.boot.pojo.OperationLog;
 import com.boot.service.LoginLogService;
 import com.boot.service.OperationService;
 import com.github.pagehelper.PageHelper;
@@ -20,7 +20,7 @@ import java.util.List;
  * @author 游政杰
  */
 @Controller
-@RequestMapping(path = "/pear")
+@RequestMapping(path = "/feign/pear")
 @Api("日志控制器")
 public class logController {
 
@@ -34,16 +34,16 @@ public class logController {
     @RequestMapping(path = "/log/loginlog")
     public String loginLogData(@RequestParam(value = "page", defaultValue = "1") int page,
                                @RequestParam(value = "limit", defaultValue = "10") int limit){
-        layuiData<loginLog> data = new layuiData<>();
+        layuiData<LoginLog> data = new layuiData<>();
 
         PageHelper.startPage(page,limit);
-        List<loginLog> loginLogs = loginLogService.selectLoginLogAll();
+        List<LoginLog> LoginLogs = loginLogService.selectLoginLogAll();
 
         int count = loginLogService.loginLogCount();
 
         data.setCode(0);
         data.setMsg("");
-        data.setData(loginLogs);
+        data.setData(LoginLogs);
         data.setCount(count);
         return JSON.toJSONString(data);
     }
@@ -53,16 +53,16 @@ public class logController {
     public String operationLogData(@RequestParam(value = "page",defaultValue = "1") int page,
                                    @RequestParam(value = "limit",defaultValue = "10") int limit){
 
-        layuiData<operationLog> data = new layuiData<>();
+        layuiData<OperationLog> data = new layuiData<>();
 
         PageHelper.startPage(page, limit);
-        List<operationLog> operationLogs = operationService.selectAllOperationLog();
+        List<OperationLog> OperationLogs = operationService.selectAllOperationLog();
 
         int count = operationService.selectOperationCount();
 
         data.setCode(0);
         data.setMsg("");
-        data.setData(operationLogs);
+        data.setData(OperationLogs);
         data.setCount(count);
 
         return JSON.toJSONString(data);

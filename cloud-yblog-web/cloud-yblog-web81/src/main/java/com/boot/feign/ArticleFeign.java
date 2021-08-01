@@ -7,17 +7,24 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-@FeignClient(value = "cloud-yblog-article")
+@FeignClient(value = "cloud-yblog-article",fallback = ArticleFeignImpl.class)
 public interface ArticleFeign {
 
 
     @ResponseBody
-    @GetMapping(path = "/article/selectAllArticle")
-    public CommonResult<List<Article>> selectAllArticle();
+    @GetMapping(path = "/selectAllArticle")
+    public CommonResult<List<Article>> selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
+                                                              @RequestParam("pageSize") int pageSize);
+
+    @ResponseBody
+    @GetMapping(path = "/selectLikeCount")
+    public int selectLikeCount(@RequestParam("id") int id);
+
 
 
 

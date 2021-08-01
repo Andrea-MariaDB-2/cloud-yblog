@@ -4,11 +4,11 @@
 
 <mapper namespace="com.boot.dao.SettingMapper">
 
-    <select id="selectUserSetting" resultType="com.boot.pojo.setting">
+    <select id="selectUserSetting" resultType="com.boot.pojo.Setting">
         select * from t_setting where name=#{name}
     </select>
 
-    <insert id="addSettingByUser" parameterType="com.boot.pojo.setting">
+    <insert id="addSettingByUser" parameterType="com.boot.pojo.Setting">
         insert into t_setting (name,logo,foot,theme) values
         (#{name},#{logo}
         <if test="foot == null">
@@ -21,7 +21,7 @@
         )
     </insert>
 
-    <update id="changeSettingByUser" parameterType="com.boot.pojo.setting">
+    <update id="changeSettingByUser" parameterType="com.boot.pojo.Setting">
         update t_setting
         <set>
             <if test="logo == null">

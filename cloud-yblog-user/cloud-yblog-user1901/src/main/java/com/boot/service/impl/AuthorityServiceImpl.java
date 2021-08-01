@@ -1,6 +1,6 @@
 package com.boot.service.impl;
 
-import com.boot.pojo.authority;
+import com.boot.pojo.Authority;
 import com.boot.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public class AuthorityServiceImpl implements AuthorityService {
     private com.boot.dao.AuthorityMapper authorityMapper;
 
     @Override
-    public List<authority> selectUserAuthority() {
+    public List<Authority> selectUserAuthority() {
         return authorityMapper.selectUserAuthority();
     }
 

@@ -1,10 +1,10 @@
 package com.boot.service;
 
-import com.boot.pojo.user_authority;
+import com.boot.pojo.UserAuthority;
 
 public interface UserAuthorityService {
 
-    void changeUserAuthority(user_authority user_authority);
+    void changeUserAuthority(UserAuthority UserAuthority);
 
     int selectAuthorityID(int userid);
 }

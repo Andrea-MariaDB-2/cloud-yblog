@@ -188,7 +188,7 @@
                                 th:id="'alike'+${article.id}" + href="#" class="iconfont icon-dianzan"
                                 th:onclick="lk([[${article.id}]])"></a>&nbsp;<span
                                 th:id="'likecount'+${article.id}"
-                                th:text="${articleService.selectLikeCount(article.id)}"></span></span>
+                                th:text="${articleFeign.selectLikeCount(article.id)}"></span></span>
 
                         <!--                        说明已经点赞，把点赞图标变红-->
                         <span th:if="${likeService.selectLikeExsit(user,article.id)} ne null" class="like"><a
@@ -196,7 +196,7 @@
                                 class="iconfont icon-dianzan"
                                 th:onclick="lk([[${article.id}]])"></a>&nbsp;<span
                                 th:id="'likecount'+${article.id}"
-                                th:text="${articleService.selectLikeCount(article.id)}"></span></span>
+                                th:text="${articleFeign.selectLikeCount(article.id)}"></span></span>
 
                     </div>
                 </div>
@@ -386,7 +386,7 @@
                 <div class="right-card-main">
                     <div class="right-card-title">友情链接</div>
                     <ul class="label">
-                        <li th:each="link:${links}">
+                        <li th:each="link:${Links}">
                             <a th:href="${link.getLink()}" th:text="${link.getTitle()}"></a>
                         </li>
                     </ul>

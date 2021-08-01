@@ -1,7 +1,7 @@
 package com.boot.service.impl;
 
 import com.boot.dao.CategoryMapper;
-import com.boot.pojo.category;
+import com.boot.pojo.Category;
 import com.boot.service.ArticleService;
 import com.boot.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +61,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<category> selectCategories_echarts() {
+    public List<Category> selectCategories_echarts() {
         return categoryMapper.selectCategories_echarts();
     }
 
@@ -71,7 +71,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public category selectCategoryByName(String categoryName) {
+    public Category selectCategoryByName(String categoryName) {
         return categoryMapper.selectCategoryByName(categoryName);
     }
 
@@ -87,7 +87,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
-    public List<category> selectCategories() {
+    public List<Category> selectCategories() {
         return categoryMapper.selectCategories();
     }
 
@@ -117,7 +117,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void addCategory(category category) {
+    public void addCategory(Category category) {
         categoryMapper.addCategory(category);
     }
 

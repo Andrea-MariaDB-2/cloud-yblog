@@ -15,7 +15,7 @@
     </update>
 
 
-    <select id="selectCategories" resultType="com.boot.pojo.category">
+    <select id="selectCategories" resultType="com.boot.pojo.Category">
         select * from t_categories order by categoryCount desc
     </select>
 
@@ -35,11 +35,11 @@
         update t_categories set categoryCount = categoryCount+ #{count} where categoryName=#{categoryName}
     </update>
 
-    <insert id="addCategory" parameterType="com.boot.pojo.category">
+    <insert id="addCategory" parameterType="com.boot.pojo.Category">
         insert into t_categories (categoryName,categoryCount) values (#{categoryName},0)
     </insert>
 
-    <select id="selectCategories_echarts" resultType="com.boot.pojo.category">
+    <select id="selectCategories_echarts" resultType="com.boot.pojo.Category">
         select * from t_categories order by categoryCount desc limit 4
     </select>
 
@@ -48,7 +48,7 @@
     </select>
 
 
-    <select id="selectCategoryByName" resultType="com.boot.pojo.category">
+    <select id="selectCategoryByName" resultType="com.boot.pojo.Category">
         select * from  t_categories where categoryName=#{categoryName}
     </select>
 

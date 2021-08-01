@@ -1,7 +1,7 @@
 package com.boot.service.impl;
 
 import com.boot.dao.LinkMapper;
-import com.boot.pojo.link;
+import com.boot.pojo.Link;
 import com.boot.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,17 +15,17 @@ public class LinkServiceImpl implements LinkService {
     private LinkMapper linkMapper;
 
     @Override
-    public List<link> selectAllLink() {
+    public List<Link> selectAllLink() {
         return linkMapper.selectAllLink();
     }
 
     @Override
-    public void updateLink(link link) {
+    public void updateLink(Link link) {
         linkMapper.updateLink(link);
     }
 
     @Override
-    public void insertLink(link link) {
+    public void insertLink(Link link) {
         linkMapper.insertLink(link);
     }
 
@@ -40,7 +40,7 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
-    public List<link> selectLinkByTitle(String title) {
+    public List<Link> selectLinkByTitle(String title) {
         return linkMapper.selectLinkByTitle(title);
     }
 

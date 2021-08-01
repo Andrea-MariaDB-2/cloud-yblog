@@ -1,14 +1,14 @@
 package com.boot.utils;
 
-import com.boot.pojo.visitor;
+import com.boot.pojo.Visitor;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-import static com.boot.utils.browserOS.getBrowserName;
-import static com.boot.utils.browserOS.getOsName;
+import static com.boot.utils.BrowserOS.getBrowserName;
+import static com.boot.utils.BrowserOS.getOsName;
 
 /**
  * @author 游政杰
@@ -23,13 +23,13 @@ public final class visitorUtil {
      * @param request
      * @return
      */
-    public static final visitor getVisitor(HttpServletRequest request, String desc) {
-        String ipAddr = ipUtils.getIpAddr(request); //获取ip
+    public static final Visitor getVisitor(HttpServletRequest request, String desc) {
+        String ipAddr = IpUtils.getIpAddr(request); //获取ip
         String cityInfo = IpToAddressUtil.getCityInfo(ipAddr); //获取访问者城市信息
         String browserName = getBrowserName(request); //获取浏览器名
         String osName = getOsName(request); //获取访问者操作系统
 
-        visitor visitor = new visitor();
+        Visitor visitor = new Visitor();
         visitor.setVisit_ip(ipAddr);
         /**
          * 本地访问（也就是没有部署到外网）的情况下，会检测不到所在地址，这时候给它一个默认值

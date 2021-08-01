@@ -5,7 +5,7 @@
 <mapper namespace="com.boot.dao.ArchiveMapper">
 
 <!--    此处mybatis有bug，运行结果不一致，ORDER BY months desc不生效-->
-    <select id="selectAllArchiveGroup" resultType="com.boot.pojo.archive">
+    <select id="selectAllArchiveGroup" resultType="com.boot.pojo.Archive">
         SELECT
 	DATE_FORMAT( created, '%Y-%m' ) months,
 	count( id ) count

@@ -5,7 +5,7 @@
 
 <mapper namespace="com.boot.dao.AuthorityMapper">
 
-    <select id="selectUserAuthority" resultType="com.boot.pojo.authority">
+    <select id="selectUserAuthority" resultType="com.boot.pojo.Authority">
         select * from t_authority
     </select>
 

@@ -3,7 +3,7 @@ package com.boot.controller;
 import com.alibaba.fastjson.JSON;
 import com.boot.constant.Constant;
 import com.boot.data.ResponseData.ResponseJSON;
-import com.boot.pojo.like;
+import com.boot.pojo.Like;
 import com.boot.service.ArticleService;
 import com.boot.service.LikeService;
 import com.boot.utils.SpringSecurityUtil;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping(path = "/like")
+@RequestMapping(path = "/feign/like")
 public class LikeController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class LikeController {
 
     @RequestMapping(path = "/art")
     @ResponseBody
-    public String likeArticle(like like, HttpSession session) {
+    public String likeArticle(Like like, HttpSession session) {
         ResponseJSON json = new ResponseJSON();
         String name = springSecurityUtil.currentUser(session);
         like.setUsername(name);

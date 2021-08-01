@@ -79,7 +79,7 @@ Change Log: `bootstrap-fileinput`
 - (enh #1638): Correct zoom cache to prevent duplicate thumb frames display.
 - (enh #1637): Remove dependency on DOM Purify Plugin.
 - (enh #1636): Enhance preview for PDF, Text & HTML.
-- (enh #1635): Enhance Text & HTML files initial preview to be read as links.
+- (enh #1635): Enhance Text & HTML files initial preview to be read as Links.
 - (bug #1632): Correct preview for plain text content.
 - (bug #1631): Correct modal dialog `aria-labelledby` binding.
 - (enh #1630): New `preProcessUpload` callback that can convert / encrypt file content before upload.

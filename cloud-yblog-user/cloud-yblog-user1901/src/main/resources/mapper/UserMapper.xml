@@ -4,18 +4,18 @@
 
 <mapper namespace="com.boot.dao.UserMapper">
 
-    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.boot.pojo.user">
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.boot.pojo.User">
         insert into t_user(username,password,email,created,valid)
         values(#{username},#{password},#{email},#{date},#{valid})
     </insert>
 
-    <insert id="addUserAuthority" parameterType="com.boot.pojo.user_authority">
+    <insert id="addUserAuthority" parameterType="com.boot.pojo.UserAuthority">
         insert into t_user_authority (user_id,authority_id) values (#{user_id},#{authority_id});
     </insert>
 
-    <resultMap id="res1" type="com.boot.pojo.user">
+    <resultMap id="res1" type="com.boot.pojo.User">
         <result property="email" column="email"/>
-        <association property="userDetail" javaType="com.boot.pojo.userDetail">
+        <association property="userDetail" javaType="com.boot.pojo.UserDetail">
             <result property="blogName" column="blogName"/>
             <result property="job" column="job"/>
             <result property="detail" column="detail"/>
@@ -56,14 +56,14 @@
     </update>
 
 
-    <resultMap id="res2" type="com.boot.pojo.user">
+    <resultMap id="res2" type="com.boot.pojo.User">
         <result column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="email" property="email"/>
         <result column="created" property="date"/>
         <result column="valid" property="valid"/>
 
-        <association property="user_authority" javaType="com.boot.pojo.user_authority">
+        <association property="UserAuthority" javaType="com.boot.pojo.UserAuthority">
             <result column="authority_id" property="authority_id"/>
         </association>
 
@@ -107,14 +107,14 @@
         SELECT COUNT(*) FROM t_user
     </select>
 
-    <resultMap id="res3" type="com.boot.pojo.user">
+    <resultMap id="res3" type="com.boot.pojo.User">
         <result column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="email" property="email"/>
         <result column="created" property="date"/>
         <result column="valid" property="valid"/>
 
-        <association property="user_authority" javaType="com.boot.pojo.user_authority">
+        <association property="UserAuthority" javaType="com.boot.pojo.UserAuthority">
             <result column="authority_id" property="authority_id"/>
         </association>
     </resultMap>

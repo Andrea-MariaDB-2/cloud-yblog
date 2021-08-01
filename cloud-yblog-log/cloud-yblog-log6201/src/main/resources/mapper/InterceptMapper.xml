@@ -4,7 +4,7 @@
 
 <mapper namespace="com.boot.dao.InterceptMapper">
 
-    <insert id="insertIntercept" parameterType="com.boot.pojo.intercept">
+    <insert id="insertIntercept" parameterType="com.boot.pojo.Intercept">
         INSERT INTO t_intercept (
         intercept_ip,
         intercept_address,
@@ -43,7 +43,7 @@
     </insert>
 
 
-    <select id="selectIntercepts" resultType="com.boot.pojo.intercept">
+    <select id="selectIntercepts" resultType="com.boot.pojo.Intercept">
         select * from t_intercept order by intercept_time desc
     </select>
 

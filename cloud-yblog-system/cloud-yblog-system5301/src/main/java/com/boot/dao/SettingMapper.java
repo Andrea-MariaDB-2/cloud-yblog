@@ -1,6 +1,6 @@
 package com.boot.dao;
 
-import com.boot.pojo.setting;
+import com.boot.pojo.Setting;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SettingMapper {
 
-    setting selectUserSetting(@Param("name") String name);
+    Setting selectUserSetting(@Param("name") String name);
 
-    void addSettingByUser(setting setting);
+    void addSettingByUser(Setting setting);
 
-    void changeSettingByUser(setting setting);
+    void changeSettingByUser(Setting setting);
 
     void deleteSettingByUser(@Param("name") String name);
 

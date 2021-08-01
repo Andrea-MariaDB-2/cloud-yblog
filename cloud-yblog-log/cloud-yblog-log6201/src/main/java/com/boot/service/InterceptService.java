@@ -1,16 +1,16 @@
 package com.boot.service;
 
-import com.boot.pojo.intercept;
+import com.boot.pojo.Intercept;
 
 import java.util.List;
 
 public interface InterceptService {
 
 
-    void insertIntercept(intercept intercept);
+    void insertIntercept(Intercept intercept);
 
     //查询所有拦截记录
-    List<intercept> selectIntercepts();
+    List<Intercept> selectIntercepts();
 
     int selectInterceptCount();
 

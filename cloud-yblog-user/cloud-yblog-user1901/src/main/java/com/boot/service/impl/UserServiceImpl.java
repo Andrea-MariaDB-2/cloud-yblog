@@ -1,7 +1,7 @@
 package com.boot.service.impl;
 
-import com.boot.pojo.user;
-import com.boot.pojo.user_authority;
+import com.boot.pojo.User;
+import com.boot.pojo.UserAuthority;
 import com.boot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ public class UserServiceImpl implements UserService {
     private com.boot.dao.UserMapper userMapper;
 
     @Override
-    public void addUser(user user) {
+    public void addUser(User user) {
         userMapper.addUser(user);
     }
 
     @Override
-    public void addUserAuthority(user_authority user_authority) {
-        userMapper.addUserAuthority(user_authority);
+    public void addUserAuthority(UserAuthority UserAuthority) {
+        userMapper.addUserAuthority(UserAuthority);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public user selectUserInfoByuserName(String username) {
+    public User selectUserInfoByuserName(String username) {
         return userMapper.selectUserInfoByuserName(username);
     }
 
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<user> selectAllUser() {
+    public List<User> selectAllUser() {
         return userMapper.selectAllUser();
     }
 
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<user> selectUserByUsernameAndEmail(String username, String email) {
+    public List<User> selectUserByUsernameAndEmail(String username, String email) {
         return userMapper.selectUserByUsernameAndEmail(username,email);
     }
 

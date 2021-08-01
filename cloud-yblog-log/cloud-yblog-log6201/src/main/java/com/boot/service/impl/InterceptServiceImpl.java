@@ -1,6 +1,6 @@
 package com.boot.service.impl;
 
-import com.boot.pojo.intercept;
+import com.boot.pojo.Intercept;
 import com.boot.service.InterceptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ public class InterceptServiceImpl implements InterceptService {
     private com.boot.dao.InterceptMapper interceptMapper;
 
     @Override
-    public void insertIntercept(intercept intercept) {
+    public void insertIntercept(Intercept intercept) {
         interceptMapper.insertIntercept(intercept);
     }
 
     @Override
-    public List<intercept> selectIntercepts() {
+    public List<Intercept> selectIntercepts() {
         return interceptMapper.selectIntercepts();
     }
 

@@ -1,6 +1,6 @@
 package com.boot.dao;
 
-import com.boot.pojo.loginLog;
+import com.boot.pojo.LoginLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +14,9 @@ import java.util.List;
 @Repository
 public interface LoginLogMapper {
 
-    void insertLoginLog(loginLog loginLog);
+    void insertLoginLog(LoginLog loginLog);
 
-    List<loginLog> selectLoginLogAll();
+    List<LoginLog> selectLoginLogAll();
 
     int loginLogCount();
 
