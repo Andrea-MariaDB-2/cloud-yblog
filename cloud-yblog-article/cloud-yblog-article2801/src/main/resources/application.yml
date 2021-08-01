@@ -8,11 +8,6 @@ spring:
     password:
     host: localhost
     database: 12     #使用db12
-#  security:
-#    # 配置默认的 InMemoryUserDetailsManager 的用户账号与密码。
-#    user:
-#      name: root # 账号
-#      password: 123456 # 密码
   datasource:
     url: jdbc:mysql://localhost:3306/cloud_yblog_article?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8
     username: root
@@ -38,6 +33,26 @@ spring:
       max-active: 30
       # 初始化时建立物理连接的个数
       initial-size: 5
+    #springcloud配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848    #单机部署
+    sentinel:
+      transport:
+        port: 8720
+        dashboard: localhost:8080
+
+
+#开启feign对sentinel的支持
+feign:
+  sentinel:
+    enabled: true
+
+#设置ribbon的超时时间
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
 
 
 
