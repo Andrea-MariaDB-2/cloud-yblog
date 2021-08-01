@@ -15,12 +15,9 @@ public interface TimeCalcMapper {
 
     void insertTimeCalc(TimeCalc timeCalc);
 
-
     List<TimeCalc> selectAllTimeCalc();
 
-
     int selectAllCount();
-
 
     //根据uri去查询接口监控的数据
     @Select("select * from t_timecalc where uri=#{uri}")

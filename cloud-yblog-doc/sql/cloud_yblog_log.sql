@@ -11,7 +11,7 @@
  Target Server Version : 50711
  File Encoding         : 65001
 
- Date: 30/07/2021 18:19:15
+ Date: 01/08/2021 11:55:58
 */
 
 SET NAMES utf8mb4;
@@ -50,21 +50,11 @@ CREATE TABLE `t_loginlog`  (
   `lg_time` datetime(0) NOT NULL COMMENT '登录时间',
   `lg_type` tinyint(2) NOT NULL COMMENT '登录类型:比如正常登录和记住我自动登录',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2168 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_loginlog
 -- ----------------------------
-INSERT INTO `t_loginlog` VALUES (2158, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:17:54', 1);
-INSERT INTO `t_loginlog` VALUES (2159, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:50:38', 1);
-INSERT INTO `t_loginlog` VALUES (2160, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:50:44', 2);
-INSERT INTO `t_loginlog` VALUES (2161, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:52:11', 1);
-INSERT INTO `t_loginlog` VALUES (2162, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:53:39', 1);
-INSERT INTO `t_loginlog` VALUES (2163, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:55:05', 1);
-INSERT INTO `t_loginlog` VALUES (2164, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:55:22', 2);
-INSERT INTO `t_loginlog` VALUES (2165, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:55:29', 2);
-INSERT INTO `t_loginlog` VALUES (2166, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:55:59', 1);
-INSERT INTO `t_loginlog` VALUES (2167, 'admin', '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-21 00:06:07', 1);
 
 -- ----------------------------
 -- Table structure for t_operationlog
@@ -81,23 +71,11 @@ CREATE TABLE `t_operationlog`  (
   `op_time` datetime(0) NOT NULL,
   `op_type` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Operation注解的值，也就是访问的接口的作用',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 479 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_operationlog
 -- ----------------------------
-INSERT INTO `t_operationlog` VALUES (467, 'admin', '192.168.184.1', '/pear/toconsole', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:18:01', '进入控制后台界面');
-INSERT INTO `t_operationlog` VALUES (468, 'admin', '192.168.184.1', '/pear/toLog', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:18:24', '进入行为日志界面');
-INSERT INTO `t_operationlog` VALUES (469, 'admin', '192.168.184.1', '/pear/toSetting', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:18:34', '进入系统设置界面');
-INSERT INTO `t_operationlog` VALUES (470, 'admin', '192.168.184.1', '/pear/toSetting', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:18:42', '进入系统设置界面');
-INSERT INTO `t_operationlog` VALUES (471, 'admin', '192.168.184.1', '/pear/toconsole', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:27:56', '进入控制后台界面');
-INSERT INTO `t_operationlog` VALUES (472, 'admin', '192.168.184.1', '/pear/topublish', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:28:10', '进入发布文章界面');
-INSERT INTO `t_operationlog` VALUES (473, 'admin', '192.168.184.1', '/pear/add/draft', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:28:15', '放入草稿');
-INSERT INTO `t_operationlog` VALUES (474, 'admin', '192.168.184.1', '/pear/topublish', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:28:21', '进入发布文章界面');
-INSERT INTO `t_operationlog` VALUES (475, 'admin', '192.168.184.1', '/pear/add/draft', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:28:27', '放入草稿');
-INSERT INTO `t_operationlog` VALUES (476, 'admin', '192.168.184.1', '/pear/topublish', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:28:32', '进入发布文章界面');
-INSERT INTO `t_operationlog` VALUES (477, 'admin', '192.168.184.1', '/pear/add/draft', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:28:37', '放入草稿');
-INSERT INTO `t_operationlog` VALUES (478, 'admin', '192.168.184.1', '/pear/toChangeDraft', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:28:51', '进入编辑草稿页面');
 
 -- ----------------------------
 -- Table structure for t_timecalc
@@ -7619,16 +7597,10 @@ CREATE TABLE `t_visitor`  (
   `visit_time` datetime(0) NOT NULL COMMENT '访问时间',
   `visit_describe` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '访问描述',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 811 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_visitor
 -- ----------------------------
-INSERT INTO `t_visitor` VALUES (805, '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:17:46', '访问首页');
-INSERT INTO `t_visitor` VALUES (806, '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-17 20:27:55', '进入后台界面');
-INSERT INTO `t_visitor` VALUES (807, '223.73.48.51', '中国-广东省-河源市-源城区', 'Chrome Mobile', 'Android 1.x', '2021-07-20 17:00:26', '访问首页');
-INSERT INTO `t_visitor` VALUES (808, '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:49:44', '访问首页');
-INSERT INTO `t_visitor` VALUES (809, '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-20 23:55:07', '访问首页');
-INSERT INTO `t_visitor` VALUES (810, '192.168.184.1', '暂未检测到所在地址', 'Firefox 9', 'Windows 10', '2021-07-21 00:05:46', '访问首页');
 
 SET FOREIGN_KEY_CHECKS = 1;
