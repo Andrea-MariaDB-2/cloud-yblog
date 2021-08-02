@@ -13,8 +13,7 @@ public class CommonResult<T> {
 
     private String msg;
 
-
-    public CommonResult() {
+    private CommonResult() {
         this.data = null;
         this.code = Constant.ERROR;
         this.msg = "";

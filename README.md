@@ -25,7 +25,40 @@ Gitee: https://gitee.com/youzhengjie/springBootBlog
   </a>
 </p>
 
-### 目标
-> **虽说博客系统已不是新鲜玩意，但是我觉得把一个普通的项目做的更完善、功能更多的话你就不普通，我也会秉承着这个理念一直把项目完善下去**<br/>
-> **本人是大二的菜鸟，项目中如有不足，请大佬赐教，一起共同进步吧！！！**
+### 技术栈
+#### 后端
+
+| 名称                | 官网                                                         |
+| -----------------   | ------------------------------------------------------------ |
+| Spring Boot             | https://spring.io/projects/spring-boot               | 
+| Spring Cloud        |     https://spring.io/projects/spring-cloud                    |
+| Spring Cloud Alibaba     |  https://spring.io/projects/spring-cloud-alibaba                       |
+| Nacos      |     https://nacos.io/zh-cn/                    |
+| Seata        |   http://seata.io/zh-cn/                      |
+| Sentinel     |   https://github.com/alibaba/Sentinel                      |
+| Redis             | http://www.redis.cn/               | 
+| RabbitMQ                   |  https://www.rabbitmq.com/                                  |
+| elasticSearch           |    https://www.elastic.co/cn/elasticsearch/                  |
+| MyBatis             | http://www.mybatis.org/mybatis-3/zh/index.html               |         
+| Spring Security        | https://spring.io/projects/spring-security/                                   |
+| PageHelper         | http://git.oschina.net/free/Mybatis_PageHelper               |
+| Maven              | http://maven.apache.org/                                     |
+| MySQL              | https://www.mysql.com/                                       |                                  |
+| Swagger2                  | https://swagger.io/               |
+| Druid                       |    https://github.com/alibaba/druid                    |
+| fastjson                          |   https://github.com/alibaba/fastjson/                |
+| sjf4j                     |   http://www.slf4j.org/  |
+| thumbnailator                         |   https://github.com/coobird/thumbnailator                   |
+| Nginx                       |     http://nginx.org/en/download.html
+#### 前端
+
+| 名称            | 描述       | 官网                                                     |
+| --------------- | ---------- | -------------------------------------------------------- |
+| jQuery          | 函数库     | http://jquery.com/                                       |
+| Bootstrap       | 前端框架   | https://v3.bootcss.com/                                |
+| echarts         | 可视化图表库       | https://echarts.apache.org/zh/index.html        |                        |                             |
+| Thymeleaf     | 模板引擎                | https://www.thymeleaf.org/      |
+| TinyMCE        |  富文本编辑器         |  http://tinymce.ax-z.cn/  |
+| alertJs          |弹框插件          |  https://gitee.com/ydq/alertjs
+| layui           | 模块化前端UI框架        | https://www.layui.com/         |
 

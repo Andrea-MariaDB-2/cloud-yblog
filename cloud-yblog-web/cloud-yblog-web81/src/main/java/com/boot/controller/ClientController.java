@@ -3,13 +3,22 @@ package com.boot.controller;
 import com.boot.annotation.Visitor;
 import com.boot.constant.ThemeConstant;
 import com.boot.data.CommonResult;
-import com.boot.feign.ArticleFeign;
-import com.boot.feign.SettingFeign;
+import com.boot.feign.article.ArticleFeign;
+import com.boot.feign.article.LikeFeign;
+
+import com.boot.feign.article.LinkFeign;
+import com.boot.feign.article.TagFeign;
+
+import com.boot.feign.system.SettingFeign;
+import com.boot.feign.user.UserDetailFeign;
 import com.boot.pojo.*;
 import com.boot.utils.Commons;
+import com.boot.utils.IpUtils;
 import com.boot.utils.SpringSecurityUtil;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextImpl;
@@ -21,6 +30,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -30,13 +40,27 @@ import java.util.concurrent.TimeUnit;
  */
 @Controller
 @Api("客户端界面控制器")
+@Slf4j
 public class ClientController {
 
-    @Resource
+    @Autowired
     private ArticleFeign articleFeign;
 
-    @Resource
+    @Autowired
     private SettingFeign settingFeign;
+
+    @Autowired
+    private LikeFeign likeFeign;
+
+    @Autowired
+    private TagFeign tagFeign;
+
+    @Autowired
+    private UserDetailFeign userDetailFeign;
+
+    @Autowired
+    private LinkFeign linkFeign;
+
 
     @Autowired
     private RedisTemplate redisTemplate;
@@ -45,18 +69,50 @@ public class ClientController {
     private SpringSecurityUtil securityUtil;
 
 
+//    @ResponseBody
+//    @GetMapping(path = "/test")
+//    public CommonResult<List<Article>> test(){
+//
+//    return articleFeign.selectAllArticleOrderByDesc();
+//    }
+
+
     private void setting(HttpSession session,ModelAndView modelAndView){
         SecurityContextImpl securityContext = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
         if (securityContext != null) {
             String name = securityUtil.currentUser(session);
-            CommonResult<Setting> setting = settingFeign.selectUserSetting(name);
-            modelAndView.addObject("setting",setting.getData());
+            Setting setting = settingFeign.selectUserSetting(name);
+            modelAndView.addObject("setting",setting);
         }else {
             modelAndView.addObject("setting",null);
         }
 
     }
 
+    //前10排行
+    private static final List<Article> ArticleOrder_10(List<Article> articleList) {
+        List<Article> list = new ArrayList<>(10);
+        for (int i = 0; i < 10; i++) {
+            list.add(articleList.get(i));
+        }
+        return list;
+    }
+
+    private void queryUserDeail(HttpSession session, ModelAndView modelAndView) {
+        SecurityContextImpl securityContext = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
+        if (securityContext != null) {
+            String name = securityUtil.currentUser(session);
+            if (name != null && !name.equals("")) {
+
+                UserDetail userDetailCommonResult = userDetailFeign.selectUserDetailByUserName(name);
+
+                modelAndView.addObject("userDetail", userDetailCommonResult);
+            }
+        } else {
+            UserDetail userDetail = null;
+            modelAndView.addObject("userDetail", userDetail);
+        }
+    }
 
 
     @Visitor(desc = "访问首页")
@@ -72,7 +128,7 @@ public class ClientController {
         this.setting(session,modelAndView);
 
         modelAndView.addObject("articleFeign",articleFeign);
-        modelAndView.addObject("likeService",likeService);
+        modelAndView.addObject("likeFeign",likeFeign);
         SecurityContextImpl securityContext = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
         if (securityContext != null) {
             String name = securityUtil.currentUser(session);
@@ -83,12 +139,13 @@ public class ClientController {
             modelAndView.addObject("user",null);
         }
 
+
         //跳转不同页面主题判断
         if (ThemeConstant.curTheme.equals(ThemeConstant.CALM_THEME)) { //calm主题
             modelAndView.setViewName("client/index2"); //跳转页面
-            List<Tag> tags = tagService.selectTags_limit8();
+            List<Tag> listCommonResult = tagFeign.selectTagsByLimit8();
             modelAndView.addObject("indexAc", "active");
-            modelAndView.addObject("tags", tags);
+            modelAndView.addObject("tags", listCommonResult);
 
         } else if (ThemeConstant.curTheme.equals(ThemeConstant.DEFAULT_THEME)) { //默认主题
             modelAndView.setViewName("client/index"); //跳转页面
@@ -96,13 +153,14 @@ public class ClientController {
         }
 
 
-        CommonResult<List<Article>> articleByPage = articleFeign.selectAllArticleByPage(1, 8);
-        PageInfo pageInfo = new PageInfo(articleByPage.getData());
+        List<Article> articleByPage = articleFeign.selectAllArticleByPage(1, 8);
+        PageInfo pageInfo = new PageInfo(articleByPage);
 
 
         List<Article> as = (List<Article>) redisTemplate.opsForValue().get("articleOrders10");
         if (as == null) {
-            List<Article> articleOrders = ArticleOrder_10(articleService.selectAllArticleOrderByDesc());
+            List<Article> listCommonResult = articleFeign.selectAllArticleOrderByDesc();
+            List<Article> articleOrders = ArticleOrder_10(listCommonResult);
             redisTemplate.opsForValue().set("articleOrders10", articleOrders, 60 * 1, TimeUnit.SECONDS);
             modelAndView.addObject("articleOrders", articleOrders);
         } else {
@@ -116,20 +174,140 @@ public class ClientController {
 
 
         //友链
-        List<Link> Links = linkService.selectAllLink();
-        modelAndView.addObject("links", Links);
+        List<Link> linkResult = linkFeign.selectAllLink();
+        modelAndView.addObject("links", linkResult);
 
         //推荐文章
-        PageHelper.startPage(1,5);
-        List<Article> recommends = articleService.selectArticleByRecommend();
-        modelAndView.addObject("recommends",recommends);
+        List<Article> recommendResult = articleFeign.selectArticleByRecommendPage(1, 5);
 
-        modelAndView.addObject("articles", list);
+
+
+        modelAndView.addObject("recommends",recommendResult);
+
+        modelAndView.addObject("articles", articleByPage);
         modelAndView.addObject("commons", Commons.getInstance());
         modelAndView.addObject("pageInfo", pageInfo);
 
         return modelAndView;
     }
+
+
+
+    @Visitor(desc = "访问文章")
+    @GetMapping(path = "/article/{articleId}")
+    public ModelAndView toArticleDetailByID(@PathVariable("articleId") Integer articleId, HttpServletRequest request, HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        //传setting给前端
+        this.setting(session,modelAndView);
+
+        //当某个ip在短时间内不断访问某篇文章会造成点击量+1
+        //需求：我们想让用户ip访问文章后2分钟内，再次点击这篇文章点击量不会+1，防止用户刷点击量
+        String ipAddr = IpUtils.getIpAddr(request); //1.先获取ip
+        String key = "ip_" + ipAddr + "_ar_" + articleId;
+        Object o = redisTemplate.opsForValue().get(key);//2.通过ip和文章id，去查询有没有对应的值
+        if (o == null) {
+            //文章点击数+1
+            articleFeign.updateHits(articleId);
+            redisTemplate.opsForValue().set(key, "1", 60 * 2, TimeUnit.SECONDS); //设置2分钟的过期时间
+        }
+
+
+        //传入
+        modelAndView.addObject("indexAc", "active");
+
+
+        boolean res = false; //判断是否传入参数“c”
+        Article article = null;
+
+
+        /**
+         * xxx个人博客标题
+         */
+        SecurityContextImpl securityContext = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
+        if (securityContext != null) {
+            String name = securityUtil.currentUser(session);
+            if (name != null && !name.equals("")) {
+                UserDetail userDetailCommonResult = userDetailFeign.selectUserDetailByUserName(name);
+                modelAndView.addObject("name", name);
+                modelAndView.addObject("userDetail", userDetailCommonResult);
+            }
+        } else {
+            UserDetail userDetail = null;
+            modelAndView.addObject("userDetail", userDetail);
+        }
+
+
+        //从Redis数据库中获取指定文章id的数据，如果没有就从数据库查询，然后在放入redis中
+        article = (Article) redisTemplate.opsForValue().get("articleId_" + articleId);
+        if (article == null) {
+            article = articleFeign.selectArticleByArticleIdNoComment(articleId);//查文章内容（没有评论）
+            redisTemplate.opsForValue().set("articleId_" + articleId, article);
+        }
+        String c = request.getParameter("c");
+        int pageNum = 0;
+        if (c == null || c.equals("")) {
+            res = false;
+        } else {
+            try {
+                pageNum = Integer.parseInt(c);
+                res = true;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+                res = false;
+            }
+        }
+        if (res) {
+            modelAndView.addObject("article", article);
+            modelAndView.addObject("commons", Commons.getInstance());
+            modelAndView.addObject("articleId", articleId);
+            if (ThemeConstant.curTheme.equals(ThemeConstant.CALM_THEME)) { //calm主题
+                modelAndView.setViewName("client/articleDetails2"); //跳转页面
+
+            } else if (ThemeConstant.curTheme.equals(ThemeConstant.DEFAULT_THEME)) { //默认主题
+                modelAndView.setViewName("client/articleDetails"); //跳转页面
+            }
+            return modelAndView;
+
+
+        } else {
+            //友链
+            List<Link> links = linkFeign.selectAllLink();
+            modelAndView.addObject("links", links);
+
+
+            //推荐文章
+            List<Article> recommends = articleFeign.selectArticleByRecommendPage(1,5);
+            modelAndView.addObject("recommends",recommends);
+
+            modelAndView.addObject("article", article);
+            modelAndView.addObject("commons", Commons.getInstance());
+            modelAndView.addObject("articleId", articleId);
+
+            //跳转不同页面主题判断
+            if (ThemeConstant.curTheme.equals(ThemeConstant.CALM_THEME)) { //calm主题
+                modelAndView.setViewName("client/articleDetails2"); //跳转页面
+                List<Tag> tags = tagFeign.selectTagsByLimit8();
+                modelAndView.addObject("tags", tags);
+                List<Article> as = (List<Article>) redisTemplate.opsForValue().get("articleOrders10");
+                if (as == null) {
+                    List<Article> articleOrders = ArticleOrder_10(articleFeign.selectAllArticleOrderByDesc());
+                    redisTemplate.opsForValue().set("articleOrders10", articleOrders, 60 * 1, TimeUnit.SECONDS);
+                    modelAndView.addObject("articleOrders", articleOrders);
+                } else {
+                    modelAndView.addObject("articleOrders", as);
+                }
+
+            } else if (ThemeConstant.curTheme.equals(ThemeConstant.DEFAULT_THEME)) { //默认主题
+                modelAndView.setViewName("client/articleDetails"); //跳转页面
+
+            }
+
+            return modelAndView;
+
+        }
+    }
+
 
 
 }

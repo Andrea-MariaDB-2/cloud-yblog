@@ -1,7 +1,7 @@
-package com.boot.feign.impl;
+package com.boot.feign.system.impl;
 
 import com.boot.data.CommonResult;
-import com.boot.feign.SettingFeign;
+import com.boot.feign.system.SettingFeign;
 import com.boot.pojo.Setting;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ public class SettingFeignImpl implements SettingFeign {
 
 
     @Override
-    public CommonResult<Setting> selectUserSetting(String name) {
+    public Setting selectUserSetting(String name) {
         log.error("SettingFeignImpl--selectUserSetting--fallback");
         return null;
     }

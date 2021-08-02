@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,12 +31,12 @@ public class ArticleController {
 
     @ResponseBody
     @GetMapping(path = "/selectAllArticle")
-    public CommonResult<List<Article>> selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
-                                                              @RequestParam("pageSize") int pageSize){
+    public List<Article> selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
+                                                @RequestParam("pageSize") int pageSize){
         PageHelper.startPage(pageNum, pageSize);
         List<Article> articles = articleService.selectAllArticle();
 
-        return new CommonResult<List<Article>>(articles);
+        return articles;
     }
 
     @ResponseBody
@@ -48,6 +47,46 @@ public class ArticleController {
 
         return count;
     }
+
+    @ResponseBody
+    @GetMapping(path = "/selectAllArticleOrderByDesc")
+    public List<Article> selectAllArticleOrderByDesc(){
+
+        List<Article> articles = articleService.selectAllArticleOrderByDesc();
+
+        return articles;
+    }
+
+
+    @ResponseBody
+    @GetMapping(path = "/selectArticleByRecommendPage")
+    public List<Article> selectArticleByRecommendPage(@RequestParam("pageNum") int pageNum,
+                                                                    @RequestParam("pageSize") int pageSize){
+
+        PageHelper.startPage(pageNum,pageSize);
+        List<Article> articles = articleService.selectArticleByRecommend();
+
+        return articles;
+
+    }
+
+    @ResponseBody
+    @GetMapping(path = "/updateHits")
+    public String updateHits(@RequestParam("id") int id){
+
+        articleService.updateHits(id);
+        return "";
+    }
+
+
+    @ResponseBody
+    @GetMapping(path = "/selectArticleByArticleIdNoComment")
+    public Article selectArticleByArticleIdNoComment(@RequestParam("id") int id){
+
+        Article article = articleService.selectArticleByArticleIdNoComment(id);
+        return article;
+    }
+
 
 
 

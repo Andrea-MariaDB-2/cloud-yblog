@@ -19,11 +19,11 @@ public class SettingController {
 
     @ResponseBody
     @GetMapping(path = "/selectUserSetting")
-    public CommonResult<Setting> selectUserSetting(@RequestParam(value = "name",required = true) String name){
+    public Setting selectUserSetting(@RequestParam(value = "name",required = true) String name){
 
         Setting setting = settingService.selectUserSetting(name);
 
-        return new CommonResult<>(setting);
+        return setting;
     }
 
 

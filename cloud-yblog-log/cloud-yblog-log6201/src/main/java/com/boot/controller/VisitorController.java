@@ -19,7 +19,7 @@ import java.util.List;
  *
  */
 @Controller
-@RequestMapping(path = "/feign/pear")
+@RequestMapping(path = "/feign/visitor")
 @CrossOrigin
 public class VisitorController {
 

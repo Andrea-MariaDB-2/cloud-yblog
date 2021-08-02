@@ -15,8 +15,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author 游政杰
  * @Date 2021/8/1
  */
-@SpringBootApplication //SpringBoot启动类，排除SpringSecurity自动配置类
-@Import(SwaggerConfig.class) //导入swaggerConfig的配置类
+@SpringBootApplication
+@Import({SwaggerConfig.class}) //导入swaggerConfig的配置类
 @EnableSwagger2  //开启Swagger2
 @EnableConfigurationProperties(ScanClassProperties.class)
 @EnableFeignClients

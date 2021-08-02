@@ -50,17 +50,21 @@ spring:
       transport:
         port: 8720
         dashboard: localhost:8080
-
   security:
     user:
       name: root
       password: 123456
 
 
+  main:
+    allow-bean-definition-overriding: true    #不然多个feign接口连接相同的微服务则会报错
+
+
 #开启feign对sentinel的支持
 feign:
   sentinel:
     enabled: true
+
 
 #设置ribbon的超时时间
 ribbon:

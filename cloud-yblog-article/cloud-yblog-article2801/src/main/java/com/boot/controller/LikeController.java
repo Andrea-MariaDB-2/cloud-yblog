@@ -9,7 +9,9 @@ import com.boot.service.LikeService;
 import com.boot.utils.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -26,6 +28,19 @@ public class LikeController {
 
     @Autowired
     private SpringSecurityUtil springSecurityUtil;
+
+
+    @ResponseBody
+    @GetMapping(path = "/selectLikeExsit")
+    public String selectLikeExsit(@RequestParam("username") String username,
+                               @RequestParam("articleid") int articleid){
+
+    return likeService.selectLikeExsit(username, articleid);
+    }
+
+
+
+
 
     @RequestMapping(path = "/art")
     @ResponseBody
