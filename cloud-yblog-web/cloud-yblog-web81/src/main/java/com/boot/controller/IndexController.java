@@ -35,11 +35,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-/** @author 游政杰 2021/5/20 17:08 */
+/** @author 游政杰 2021/8/3 12:05*/
 @Controller
-@Api("客户端界面控制器")
+@Api("客户端首页控制器")
 @Slf4j
-public class ClientController {
+public class IndexController {
 
   @Autowired private ArticleFeign articleFeign;
 
@@ -57,12 +57,6 @@ public class ClientController {
 
   @Autowired private SpringSecurityUtil securityUtil;
 
-  //    @ResponseBody
-  //    @GetMapping(path = "/test")
-  //    public CommonResult<List<Article>> test(){
-  //
-  //    return articleFeign.selectAllArticleOrderByDesc();
-  //    }
 
   private void setting(HttpSession session, ModelAndView modelAndView) {
     SecurityContextImpl securityContext =

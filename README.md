@@ -25,6 +25,18 @@ Gitee: https://gitee.com/youzhengjie/springBootBlog
   </a>
 </p>
 
+### 开发环境
+
+| 类别                |   名称     |   
+| -----------------   | -------  |
+| 编译器          |    IntelliJ IDEA   |
+| 系统1             |   Windows 10   |
+| 系统2               |   CentOS 7   |
+| CPU              |    Intel i5-9300H   |
+| 内存                |    24GB         |
+
+* 注：特别是内存需要>=16GB才能运行,如果不足16GB,可以把各服务的集群变成单体服务即可，如不想关闭集群，则需要大内存支撑。
+
 ### 技术栈
 #### 后端
 
