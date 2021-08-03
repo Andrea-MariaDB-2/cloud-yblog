@@ -1,12 +1,15 @@
 package com.boot.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.boot.data.CommonResult;
 import com.boot.pojo.Article;
 import com.boot.service.ArticleService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 游政杰
@@ -22,6 +28,7 @@ import java.util.List;
 @Controller
 @RequestMapping(path = "/feign/article")
 @Api("文章控制器")
+@Slf4j
 public class ArticleController {
 
     @Autowired
@@ -31,12 +38,23 @@ public class ArticleController {
 
     @ResponseBody
     @GetMapping(path = "/selectAllArticle")
-    public List<Article> selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
-                                                @RequestParam("pageSize") int pageSize){
+    public Map selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
+                                      @RequestParam("pageSize") int pageSize){
         PageHelper.startPage(pageNum, pageSize);
         List<Article> articles = articleService.selectAllArticle();
 
-        return articles;
+        //这个pageInfo只能写在这个调用sql语句的service方法下面才有用
+        PageInfo pageInfo = new PageInfo(articles);
+
+        Map map = new HashMap();
+
+        String s1 = JSON.toJSONString(articles);
+        String s2 = JSON.toJSONString(pageInfo);
+
+        map.put("articles",s1);
+        map.put("pageInfo",s2);
+
+        return map;
     }
 
     @ResponseBody

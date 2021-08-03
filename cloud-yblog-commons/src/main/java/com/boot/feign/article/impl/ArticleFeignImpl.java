@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Slf4j
@@ -14,7 +15,7 @@ public class ArticleFeignImpl implements ArticleFeign {
 
 
     @Override
-    public List<Article> selectAllArticleByPage(int pageNum, int pageSize) {
+    public Map selectAllArticleByPage(int pageNum, int pageSize) {
         log.error("ArticleFeignImpl--selectAllArticleByPage--fallback");
         return null;
     }

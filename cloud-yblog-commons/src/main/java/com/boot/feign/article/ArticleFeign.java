@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @FeignClient(value = "cloud-yblog-article",fallback = ArticleFeignImpl.class)
@@ -18,8 +19,8 @@ public interface ArticleFeign {
 
     @ResponseBody
     @GetMapping(path = "/feign/article/selectAllArticle")
-    public List<Article> selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
-                                                @RequestParam("pageSize") int pageSize);
+    public Map selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
+                                                     @RequestParam("pageSize") int pageSize);
 
     @ResponseBody
     @GetMapping(path = "/feign/article/selectLikeCount")
