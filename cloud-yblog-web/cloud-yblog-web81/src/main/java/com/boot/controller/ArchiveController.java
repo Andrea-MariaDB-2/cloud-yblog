@@ -3,6 +3,7 @@ package com.boot.controller;
 import com.alibaba.fastjson.JSON;
 import com.boot.annotation.Visitor;
 import com.boot.constant.ThemeConstant;
+import com.boot.feign.article.ArchiveFeign;
 import com.boot.feign.article.ArticleFeign;
 import com.boot.feign.article.LinkFeign;
 import com.boot.feign.article.TagFeign;
@@ -50,6 +51,9 @@ public class ArchiveController {
 
   @Autowired
   private ArticleFeign articleFeign;
+
+  @Autowired
+  private ArchiveFeign archiveFeign;
 
   @Autowired
   private CssUtil cssUtil;
