@@ -37,6 +37,23 @@ Gitee: https://gitee.com/youzhengjie/springBootBlog
 
 * 注：特别是内存需要>=16GB才能运行,如果不足16GB,可以把各服务的集群变成单体服务即可，如不想关闭集群，则需要大内存支撑。
 
+
+### 版本对应
+| 名称                | 版本    |
+| -------------      | -------------  |
+| Spring Boot             | 2.3.2.RELEASE      | 
+| Spring Cloud            | Hoxton.SR8      | 
+| Spring Cloud Alibaba    | 2.2.3.RELEASE   |
+| Nacos                  | 1.4.1      |
+| Sentinel               | 1.8.0     |
+| Seata                  | 1.3.0      |    
+| ZipKin                |  2.12.9       |
+| elasticSearch         |  7.6.1             |
+| Kibana               |   7.6.1         |
+| MySQL                  |  5.7            |
+
+* 剩下的版本可以随意，上面写出来的版本要严格对应，不然怕会出现兼容性问题！！！
+
 ### 技术栈
 #### 后端
 
@@ -48,9 +65,11 @@ Gitee: https://gitee.com/youzhengjie/springBootBlog
 | Nacos      |     https://nacos.io/zh-cn/                    |
 | Seata        |   http://seata.io/zh-cn/                      |
 | Sentinel     |   https://github.com/alibaba/Sentinel                      |
+| ZipKin            |    https://zipkin.io/                                            |
 | Redis             | http://www.redis.cn/               | 
 | RabbitMQ                   |  https://www.rabbitmq.com/                                  |
 | elasticSearch           |    https://www.elastic.co/cn/elasticsearch/                  |
+| Kibana               |   https://www.elastic.co/cn/kibana/        |
 | MyBatis             | http://www.mybatis.org/mybatis-3/zh/index.html               |         
 | Spring Security        | https://spring.io/projects/spring-security/                                   |
 | PageHelper         | http://git.oschina.net/free/Mybatis_PageHelper               |

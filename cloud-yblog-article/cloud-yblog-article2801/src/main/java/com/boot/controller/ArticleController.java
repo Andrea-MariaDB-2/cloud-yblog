@@ -38,7 +38,7 @@ public class ArticleController {
 
     @ResponseBody
     @GetMapping(path = "/selectAllArticle")
-    public Map selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
+    public Map<String,Object> selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
                                       @RequestParam("pageSize") int pageSize){
         PageHelper.startPage(pageNum, pageSize);
         List<Article> articles = articleService.selectAllArticle();
@@ -46,7 +46,7 @@ public class ArticleController {
         //这个pageInfo只能写在这个调用sql语句的service方法下面才有用
         PageInfo pageInfo = new PageInfo(articles);
 
-        Map map = new HashMap();
+        Map<String,Object> map = new HashMap<>();
 
         String s1 = JSON.toJSONString(articles);
         String s2 = JSON.toJSONString(pageInfo);

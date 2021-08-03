@@ -21,6 +21,10 @@ public class ArchiveController {
   private ArchiveService archiveService;
 
 
+
+  public
+
+
   @ResponseBody
   @GetMapping(path = "/data")
   public String archiveData(String date) {

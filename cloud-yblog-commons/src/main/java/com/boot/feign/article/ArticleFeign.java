@@ -19,7 +19,7 @@ public interface ArticleFeign {
 
     @ResponseBody
     @GetMapping(path = "/feign/article/selectAllArticle")
-    public Map selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
+    public Map<String,Object> selectAllArticleByPage(@RequestParam("pageNum") int pageNum,
                                                      @RequestParam("pageSize") int pageSize);
 
     @ResponseBody

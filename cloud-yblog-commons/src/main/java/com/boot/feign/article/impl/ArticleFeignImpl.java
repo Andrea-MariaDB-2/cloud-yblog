@@ -15,7 +15,7 @@ public class ArticleFeignImpl implements ArticleFeign {
 
 
     @Override
-    public Map selectAllArticleByPage(int pageNum, int pageSize) {
+    public Map<String,Object> selectAllArticleByPage(int pageNum, int pageSize) {
         log.error("ArticleFeignImpl--selectAllArticleByPage--fallback");
         return null;
     }

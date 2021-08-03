@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.boot.annotation.Operation;
 import com.boot.constant.ThemeConstant;
 import com.boot.feign.article.ArticleFeign;
+import com.boot.feign.article.CategoryFeign;
 import com.boot.feign.article.LinkFeign;
 import com.boot.feign.article.TagFeign;
 import com.boot.feign.system.SettingFeign;
@@ -30,12 +31,11 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author 游政杰
- * @Date 2021/7/17
  */
 @Controller
 @Api("客户端分类")
 @RequestMapping(path = "/category")
-public class categoryController {
+public class CategoryController {
 
     @Autowired
     private SpringSecurityUtil securityUtil;
@@ -51,12 +51,6 @@ public class categoryController {
 
     @Autowired
     private ArticleFeign articleFeign;
-
-    @Autowired
-    private ArchiveFeign archiveFeign;
-
-    @Autowired
-    private VisitorFeign visitorFeign;
 
     @Autowired
     private CssUtil cssUtil;
@@ -112,10 +106,10 @@ public class categoryController {
 //            modelAndView.setViewName("client/index"); // 跳转页面   *****  主题1 ，暂不实现
         }
 
-        List<String> categoryName = categoryService.selectCategoryName();
+        List<String> categoryName = categoryFeign.selectCategoryName();
         modelAndView.addObject("categoryName",categoryName);
 
-        List<Article> articles = articleService.queryArticleByCategoryName(categoryName.get(0));
+        List<Article> articles = categoryFeign.queryArticleByCategoryName(categoryName.get(0));
         modelAndView.addObject("categoryArticles",articles); //查询第一个分类文章并传给前端展示
 
 
@@ -162,7 +156,7 @@ public class categoryController {
     @RequestMapping(path = "/data")
     public String CategoryData(String categoryName){
 
-        List<Article> articles = articleService.queryArticleByCategoryName(categoryName);
+        List<Article> articles = categoryFeign.queryArticleByCategoryName(categoryName);
 
         String jsonString = JSON.toJSONString(articles);
 

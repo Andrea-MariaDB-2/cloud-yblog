@@ -132,7 +132,7 @@ public class IndexController {
       modelAndView.setViewName("client/index"); // 跳转页面
     }
 
-    Map map = articleFeign.selectAllArticleByPage(1, 8);
+    Map<String,Object> map = articleFeign.selectAllArticleByPage(1, 8);
 
     List<Article> as = (List<Article>) redisTemplate.opsForValue().get("articleOrders10");
     if (as == null) {
@@ -205,7 +205,7 @@ public class IndexController {
 
     }
 
-    Map map = articleFeign.selectAllArticleByPage(pageNum,8);
+    Map<String,Object> map = articleFeign.selectAllArticleByPage(pageNum,8);
 
     String s2 = (String) map.get("pageInfo");
 
