@@ -1,0 +1,4 @@
+com/boot/config/ScanClassProperties.class
+com/boot/config/RedisTemplateConfig.class
+com/boot/config/DruidConfig.class
+com/boot/SearchApplication5566.class
